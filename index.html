@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robot Challenge</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="javascript.js" defer></script>
+  </head>
+  <body>
+    <h1>Robot Challenge</h1>
+    <div class="container">
+      <div class="control">
+        <div class="report">
+          <button class="report" id="report">Report</button>
+        </div>
+        <div class="move">
+          <button id="move">Move</button>
+        </div>
+        <div class="direction">
+          <button id="left">Left</button>
+          <button id="right">Right</button>
+        </div>
+        <form class="form" id="form">
+          <label for="x">Select X:</label>
+          <select id="x">
+            <option value="0">0</option>
+            <option value="100">1</option>
+            <option value="200">2</option>
+            <option value="300">3</option>
+            <option value="400">4</option>
+          </select>
+          <label for="y">Select Y:</label>
+          <select id="y">
+            <option value="0">0</option>
+            <option value="100">1</option>
+            <option value="200">2</option>
+            <option value="300">3</option>
+            <option value="400">4</option>
+          </select>
+          <label for="f">Select Direction:</label>
+          <select id="f">
+            <option value="West">West</option>
+            <option value="South">South</option>
+            <option value="East">East</option>
+            <option value="North">North</option>
+          </select>
+          <input type="submit" value="place" />
+        </form>
+      </div>
+      <div class="grid">
+        <div class="robot" id="robot">
+          <img
+            class="robot_spritesheet pixelart"
+            id="robotImg"
+            src="./robot.png"
+            alt="robot"
+          />
+        </div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+    </div>
+  </body>
+</html>

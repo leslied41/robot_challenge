@@ -122,5 +122,5 @@ reportBtn.addEventListener("click", () => {
   } else {
     facing_direction = "SOUTH";
   }
-  alert(`X: ${x}. Y: ${y}. Facing direction: ${facing_direction}.`);
+  alert(`X: ${x / 100}. Y: ${y / 100}. Facing direction: ${facing_direction}.`);
 });

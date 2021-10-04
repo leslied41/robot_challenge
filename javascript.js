@@ -43,8 +43,8 @@ form.addEventListener("submit", (e) => {
   const robotElCollectionArray = [...robotElCollection];
   console.log(robotElCollectionArray);
   //the first robot default
-  targetRobotImg = robotImgCollection[1];
-  targetRobotEl = robotElCollection[6];
+  targetRobotImg = robotImgCollection.namedItem("imgRobot-1");
+  targetRobotEl = robotElCollection.namedItem("Robot-1");
   //create active robot selection
   const activeSelectDiv = document.createElement("div");
   activeSelectDiv.classList.add("activeSelect");

@@ -1,3 +1,4 @@
+//initialize varibales
 const form = document.getElementById("form");
 const xEl = document.getElementById("x");
 const yEl = document.getElementById("y");
@@ -7,7 +8,6 @@ const leftBtn = document.getElementById("left");
 const moveBtn = document.getElementById("move");
 const reportBtn = document.getElementById("report");
 const gridEl = document.getElementById("grid");
-
 let robotList = [];
 let x = 0;
 let y = 0;
@@ -17,13 +17,16 @@ let number = 0;
 let imgEl;
 let robotEl;
 
+//place a new robot in a certain position facing a certain direction
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   number++;
   robotList.push(`Robot-${number}`);
   console.log(robotList);
+
   robotEl = document.createElement("div");
+
   imgEl = document.createElement("img");
   imgEl.classList.add("robot_spritesheet");
   imgEl.classList.add("pixelart");
@@ -39,17 +42,20 @@ form.addEventListener("submit", (e) => {
   const robotImgCollection = document.getElementsByTagName("img");
   const robotImgCollectionArray = [...robotImgCollection];
   console.log(robotImgCollectionArray);
+
   const robotElCollection = document.getElementsByTagName("div");
   const robotElCollectionArray = [...robotElCollection];
   console.log(robotElCollectionArray);
-  //the first robot default
+
+  //the default first robot
   targetRobotImg = robotImgCollection.namedItem("imgRobot-1");
   targetRobotEl = robotElCollection.namedItem("Robot-1");
+
   //create active robot selection
   const activeSelectDiv = document.createElement("div");
   activeSelectDiv.classList.add("activeSelect");
   const allActiveDiv = document.querySelectorAll(".activeSelect");
-  //remove repeated created selection
+
   allActiveDiv.forEach((item) => {
     if (form.contains(item)) {
       form.removeChild(item);
@@ -69,6 +75,7 @@ form.addEventListener("submit", (e) => {
     `);
 
   form.appendChild(activeSelectDiv);
+
   const activeSelectEl = document.getElementById("activeSelect");
   const activeBtn = document.getElementById("activeBtn");
 
@@ -86,11 +93,11 @@ form.addEventListener("submit", (e) => {
     console.log(targetRobotEl);
   });
 
-  //set placed postion
-
+  //set placed postion and direction
   const xValue = xEl.value;
   const yValue = yEl.value;
   const fValue = fEl.value;
+
   if (xValue && yValue && fValue) {
     x = parseInt(xValue);
     y = parseInt(yValue);
@@ -170,22 +177,22 @@ leftBtn.addEventListener("click", () => {
 //move
 moveBtn.addEventListener("click", () => {
   if (targetRobotImg.classList.contains("face-back")) {
-    if (y >= 0 && y <= 300) {
+    if (y >= 15 && y <= 315) {
       y = y + 100;
       targetRobotEl.style.bottom = `${y}px`;
     }
   } else if (targetRobotImg.classList.contains("face-left")) {
-    if (x > 0 && x <= 400) {
+    if (x > 10 && x <= 410) {
       x = x - 100;
       targetRobotEl.style.left = `${x}px`;
     }
   } else if (targetRobotImg.classList.contains("face-right")) {
-    if (x >= 0 && x <= 300) {
+    if (x >= 10 && x <= 310) {
       x = x + 100;
       targetRobotEl.style.left = `${x}px`;
     }
   } else {
-    if (y > 0 && y <= 400) {
+    if (y > 15 && y <= 415) {
       y = y - 100;
       targetRobotEl.style.bottom = `${y}px`;
     }

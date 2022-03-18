@@ -9,50 +9,85 @@
     <script src="javascript.js" defer></script>
   </head>
   <body>
-    <h1>Robot Challenge</h1>
-    <div class="container" id="container">
-      <div class="control">
-        <div class="report">
-          <button class="report" id="report">Report</button>
+    <header>
+      <nav>
+        <div class="title">Robot Challenge</div>
+        <div class="control-btns">
+          <div class="new-robot" data-dropdown>
+            <button class="btn" data-dropdown-btn>New Robot</button>
+            <div class="new-robot-menu drop-down-menu">
+              <div>
+                <form class="form" data-js="new-position-form">
+                  <label for="x">Select X:</label>
+                  <select id="x" data-js="position-x">
+                    <option value="10">0</option>
+                    <option value="110">1</option>
+                    <option value="210">2</option>
+                    <option value="310">3</option>
+                    <option value="410">4</option>
+                  </select>
+                  <label for="y">Select Y:</label>
+                  <select id="y" data-js="position-y">
+                    <option value="15">0</option>
+                    <option value="115">1</option>
+                    <option value="215">2</option>
+                    <option value="315">3</option>
+                    <option value="415">4</option>
+                  </select>
+                  <label for="f">Select Direction:</label>
+                  <select id="f" data-js="direction-f">
+                    <option value="West">West</option>
+                    <option value="South">South</option>
+                    <option value="East">East</option>
+                    <option value="North">North</option>
+                  </select>
+                  <input type="submit" value="place" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="active-robot" data-dropdown data-js="activate-container">
+            <button class="btn" data-dropdown-btn>Activate</button>
+            <div class="active-form-container drop-down-menu">
+              <div>
+                <form class="active-form" data-js="activate-form"></form>
+              </div>
+            </div>
+          </div>
+          <div class="report-robot" data-js="report-robot-div">
+            <button class="btn" data-js="report-btn">Report</button>
+          </div>
         </div>
-        <div class="move">
-          <button id="move">Move</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="control">
+        <div class="move-control">
+          <div class="direction">
+            <button data-js="turn-left">Left</button>
+          </div>
+          <div class="direction">
+            <button data-js="turn-right">Right</button>
+          </div>
+          <div class="move">
+            <button data-js="move-robot">Move</button>
+          </div>
         </div>
-        <div class="direction">
-          <button id="left">Left</button>
-          <button id="right">Right</button>
-        </div>
-        <form class="form" id="form">
-          <label for="x">Select X:</label>
-          <select id="x">
-            <option value="10">0</option>
-            <option value="110">1</option>
-            <option value="210">2</option>
-            <option value="310">3</option>
-            <option value="410">4</option>
-          </select>
-          <label for="y">Select Y:</label>
-          <select id="y">
-            <option value="15">0</option>
-            <option value="115">1</option>
-            <option value="215">2</option>
-            <option value="315">3</option>
-            <option value="415">4</option>
-          </select>
-          <label for="f">Select Direction:</label>
-          <select id="f">
-            <option value="West">West</option>
-            <option value="South">South</option>
-            <option value="East">East</option>
-            <option value="North">North</option>
-          </select>
-          <input type="submit" value="place" />
-        </form>
-        <!-- <form class="activeForm" id="activeForm"></form> -->
-      </div>
-      <div class="grid" id="grid">
+      </section>
+      <section class="board" data-js="board">
         <img src="./5units.png" alt="5units" class="five-units" />
+      </section>
+    </main>
+    <aside class="popup">
+      <div class="modal" data-js="modal">
+        <div class="modal-header">
+          <div class="title">ROBOTS INFO</div>
+          <button class="close-btn" data-js="close-popup-btn">&times;</button>
+        </div>
+        <div class="modal-body" data-js="modal-body"></div>
       </div>
-    </div>
+      <div class="overlay" data-js="overlay"></div>
+    </aside>
   </body>
 </html>

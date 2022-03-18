@@ -1,13 +1,21 @@
 //initialize varibales
-const form = document.getElementById("form");
-const xEl = document.getElementById("x");
-const yEl = document.getElementById("y");
-const fEl = document.getElementById("f");
-const rightBtn = document.getElementById("right");
-const leftBtn = document.getElementById("left");
-const moveBtn = document.getElementById("move");
-const reportBtn = document.getElementById("report");
-const gridEl = document.getElementById("grid");
+const form = document.querySelector("[data-js=new-position-form]");
+const xEl = document.querySelector("[data-js=position-x]");
+const yEl = document.querySelector("[data-js=position-y]");
+const fEl = document.querySelector("[data-js=direction-f]");
+const rightBtn = document.querySelector("[data-js=turn-right]");
+const leftBtn = document.querySelector("[data-js=turn-left]");
+const moveBtn = document.querySelector("[data-js=move-robot]");
+const reportBtn = document.querySelector("[data-js=report-btn]");
+const reportrobotEl = document.querySelector("[data-js=report-robot-div]");
+const boardEl = document.querySelector("[data-js=board]");
+const activeRobotEl = document.querySelector("[data-js=activate-container]");
+const activeForm = document.querySelector("[data-js=activate-form]");
+const modalEl = document.querySelector("[data-js=modal]");
+const closemodalBtn = document.querySelector("[data-js=close-popup-btn]");
+const overlayEl = document.querySelector("[data-js=overlay]");
+const modalbodyEL = document.querySelector("[data-js=modal-body]");
+
 let robotList = [];
 let x = 0;
 let y = 0;
@@ -17,6 +25,26 @@ let number = 0;
 let imgEl;
 let robotEl;
 
+//to toggle the dropdown menu
+document.addEventListener("click", (e) => {
+  const isDropdownBtn = e.target.matches("[data-dropdown-btn]");
+  //if it is in the drop down menu, do nothing.
+  if (!isDropdownBtn && e.target.closest("[data-dropdown]") != null) {
+    return;
+  }
+  let currentDropdown;
+  if (isDropdownBtn) {
+    currentDropdown = e.target.closest("[data-dropdown]");
+    currentDropdown.classList.toggle("active");
+  }
+
+  document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
+    if (dropdown === currentDropdown) {
+      return;
+    }
+    dropdown.classList.remove("active");
+  });
+});
 //place a new robot in a certain position facing a certain direction
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -24,6 +52,11 @@ form.addEventListener("submit", (e) => {
   number++;
   robotList.push(`Robot-${number}`);
   console.log(robotList);
+
+  if (robotList.length != 0) {
+    activeRobotEl.classList.add("show-activebtn");
+    reportrobotEl.classList.add("show-activebtn");
+  }
 
   robotEl = document.createElement("div");
 
@@ -37,15 +70,15 @@ form.addEventListener("submit", (e) => {
   robotEl.appendChild(imgEl);
   robotEl.classList.add("robot");
   robotEl.setAttribute("id", `Robot-${number}`);
-  gridEl.appendChild(robotEl);
+  boardEl.appendChild(robotEl);
 
   const robotImgCollection = document.getElementsByTagName("img");
   const robotImgCollectionArray = [...robotImgCollection];
-  console.log(robotImgCollectionArray);
+  //console.log(robotImgCollectionArray);
 
   const robotElCollection = document.getElementsByTagName("div");
   const robotElCollectionArray = [...robotElCollection];
-  console.log(robotElCollectionArray);
+  //console.log(robotElCollectionArray);
 
   //the default first robot
   targetRobotImg = robotImgCollection.namedItem("imgRobot-1");
@@ -57,8 +90,8 @@ form.addEventListener("submit", (e) => {
   const allActiveDiv = document.querySelectorAll(".activeSelect");
 
   allActiveDiv.forEach((item) => {
-    if (form.contains(item)) {
-      form.removeChild(item);
+    if (activeForm.contains(item)) {
+      activeForm.removeChild(item);
     }
   });
   robotList.length == 0
@@ -74,7 +107,7 @@ form.addEventListener("submit", (e) => {
             <input type="button" id='activeBtn' value='active' />
     `);
 
-  form.appendChild(activeSelectDiv);
+  activeForm.appendChild(activeSelectDiv);
 
   const activeSelectEl = document.getElementById("activeSelect");
   const activeBtn = document.getElementById("activeBtn");
@@ -137,14 +170,29 @@ reportBtn.addEventListener("click", () => {
   } else {
     facing_direction = "SOUTH";
   }
+  modalbodyEL.innerHTML = `<div><p>Active Robot Position: X: ${Math.trunc(
+    x / 100
+  )}. Y: ${Math.trunc(y / 100)}</p>
+          <p>Facing direction: ${facing_direction}</p>
+          <p>The number of robots: ${robotList.length}</p>
+          <p>The active robot is: ${
+            targetRobotEl ? targetRobotEl.id : "Robot-1"
+          }</p></div>`;
+  modalEl.classList.add("active");
+  overlayEl.classList.add("active");
+  // alert(
+  //   `Position: X: ${x / 100}. Y: ${y / 100}.
+  //    Facing direction: ${facing_direction}.
+  //    The number of robots: ${robotList.length}.
+  //    The active robot is: ${targetRobotEl ? targetRobotEl.id : "Robot-1"}`
+  // );
+});
 
-  alert(
-    `X: ${x / 100}. Y: ${
-      y / 100
-    }. Facing direction: ${facing_direction}. The number of robots: ${
-      robotList.length
-    }. The active robot is: ${targetRobotEl ? targetRobotEl.id : "Robot-1"}`
-  );
+//close report popup
+closemodalBtn.addEventListener("click", () => {
+  modalEl.classList.remove("active");
+  overlayEl.classList.remove("active");
+  modalbodyEL.innerHTML = ``;
 });
 
 //turn right

@@ -144,7 +144,6 @@ input[type="submit"]:hover {
   display: inline-block;
 }
 .container {
-  padding: 2rem;
   position: absolute;
   left: 50%;
   top: 100px;

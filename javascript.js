@@ -225,23 +225,23 @@ leftBtn.addEventListener("click", () => {
 //move
 moveBtn.addEventListener("click", () => {
   if (targetRobotImg.classList.contains("face-back")) {
-    if (y >= 15 && y <= 315) {
-      y = y + 100;
+    if (y >= 15 && y <= 225) {
+      y = y + 70;
       targetRobotEl.style.bottom = `${y}px`;
     }
   } else if (targetRobotImg.classList.contains("face-left")) {
-    if (x > 10 && x <= 410) {
-      x = x - 100;
+    if (x > 10 && x <= 290) {
+      x = x - 70;
       targetRobotEl.style.left = `${x}px`;
     }
   } else if (targetRobotImg.classList.contains("face-right")) {
-    if (x >= 10 && x <= 310) {
-      x = x + 100;
+    if (x >= 10 && x <= 220) {
+      x = x + 70;
       targetRobotEl.style.left = `${x}px`;
     }
   } else {
-    if (y > 15 && y <= 415) {
-      y = y - 100;
+    if (y > 15 && y <= 295) {
+      y = y - 70;
       targetRobotEl.style.bottom = `${y}px`;
     }
   }

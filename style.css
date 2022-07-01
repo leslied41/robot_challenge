@@ -239,7 +239,7 @@ input[type="submit"]:hover {
 /* robots */
 .board {
   margin: auto;
-  width: 500px;
+  width: 350px;
   position: relative;
 }
 .robots-container {
@@ -247,7 +247,7 @@ input[type="submit"]:hover {
   flex-wrap: wrap;
   border: blueviolet solid 3px;
   min-height: 200px;
-  width: 500px;
+  width: 350px;
   margin: auto;
   margin-top: 1rem;
   border-radius: 0.5rem;
@@ -259,26 +259,28 @@ input[type="submit"]:hover {
 }
 
 .five-units {
-  width: 500px;
-  height: 500px;
+  /* width: 500px;
+  height: 500px; */
+  width: 350px;
+  height: 350px;
 }
 
 .item {
   border: 0.1rem solid black;
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
 }
 
 .robot {
-  width: calc(30px * var(--pixel-size));
-  height: calc(32px * var(--pixel-size));
+  width: calc(21px * var(--pixel-size));
+  height: calc(22.4px * var(--pixel-size));
   background-color: rgba(243, 234, 0, 255);
   overflow: hidden;
   position: absolute;
 }
 .robots {
-  width: calc(30px * var(--pixel-size));
-  height: calc(32px * var(--pixel-size));
+  width: calc(21px * var(--pixel-size));
+  height: calc(22.4px * var(--pixel-size));
   background-color: rgba(243, 234, 0, 255);
   overflow: hidden;
 }
@@ -296,16 +298,16 @@ input[type="submit"]:hover {
 }
 .robot_spritesheet {
   animation: moveRobot 1s steps(8) infinite;
-  width: calc(260px * var(--pixel-size));
+  width: calc(182px * var(--pixel-size));
   position: relative;
 }
 
 .face-left {
-  top: calc(-34px * var(--pixel-size));
+  top: calc(-23.8px * var(--pixel-size));
 }
 .face-right {
-  top: calc(-66px * var(--pixel-size));
+  top: calc(-46.2px * var(--pixel-size));
 }
 .face-back {
-  top: calc(-98px * var(--pixel-size));
+  top: calc(-68.6px * var(--pixel-size));
 }

@@ -22,7 +22,7 @@ body {
   font-family: inherit;
   cursor: pointer;
   padding: 0;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: inherit;
 }
 .btn:hover,
@@ -46,17 +46,20 @@ header nav {
   background-color: #333333;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
+  z-index: 99;
 }
 header nav .title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .control-btns {
   cursor: pointer;
-  font-size: 1.5rem;
-  margin-left: 65%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 200px;
 }
 
 .new-robot {
@@ -67,11 +70,11 @@ header nav .title {
   opacity: 0;
   position: absolute;
   background-color: cadetblue;
-  transform: translate3d(0px, -10px, 0px);
+  transform: translate3d(-50%, -10px, 0px);
   pointer-events: none;
 }
 .new-robot.active > .new-robot-menu {
-  transform: translate3d(0px, 0px, 0px);
+  transform: translate3d(-50%, 0px, 0px);
   opacity: 1;
   pointer-events: auto;
 }
@@ -118,7 +121,6 @@ input[type="submit"]:hover {
 } */
 .active-robot {
   display: none;
-  margin-left: 30px;
   position: relative;
 }
 
@@ -127,17 +129,16 @@ input[type="submit"]:hover {
   position: absolute;
   background-color: cadetblue;
   pointer-events: none;
-  transform: translate3d(0px, -10px, 0px);
+  transform: translate3d(-50%, -10px, 0px);
 }
 .active-robot.active > .active-form-container {
   opacity: 1;
   pointer-events: auto;
-  transform: translate3d(0px, 0px, 0px);
+  transform: translate3d(-50%, 0px, 0px);
 }
 
 .report-robot {
   display: none;
-  margin-left: 30px;
 }
 .show-activebtn {
   display: inline-block;
@@ -182,7 +183,7 @@ input[type="submit"]:hover {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 200ms ease-in-out;
-  width: 30%;
+  width: 300px;
   border-radius: 10px;
   background-color: #fff;
   z-index: 999;
@@ -214,7 +215,7 @@ input[type="submit"]:hover {
 }
 .modal-body {
   padding: 20px 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
